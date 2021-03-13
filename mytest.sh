@@ -3,3 +3,4 @@ date
 cal
 echo "bye"
 systemctl status jenkins
+echo "Namastey"
