@@ -4,3 +4,4 @@ cal
 echo "bye"
 systemctl status jenkins
 echo "Namastey"
+echo "Nani"
