@@ -16,7 +16,7 @@ pipeline {
         
           steps{
               echo 'testing the application...'
-              echo 'What's going on....'
+              echo 'Whats going on....'
           }
       }
     
