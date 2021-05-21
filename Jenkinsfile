@@ -1,15 +1,12 @@
 pipeline {
+    agent any
   
-  agent any
-  
-  tools {
-      gradle 'Gradle-6.2'
+    tools {
+       gradle 'Gradle-6.2'
   }
   
   stages {
-    
       stage("run frontend") {
-        
           steps{
               echo 'executing yarn...'
               nodejs('Node-10.17') {
@@ -17,17 +14,16 @@ pipeline {
               }
          }
       }
-    
-    stage("run backend") {
-        
+      stage("run backend") {
           steps{
               echo 'executing gradle...'
-              sh './gradlew -v'
+              withGradle() {
+                   sh './gradlew -v'
+              }
           }
-    }
-  } 
+      } 
+  }  
 }  
-  
  
 
   
