@@ -1,25 +1,26 @@
 pipeline {
     agent any
     stages {
-        stage("run frontend") {
+        stage('run frontend') {
             steps {
-                echo 'executing yarn...'
+                echo 'executing yarn' 
                 nodejs('Node-10.17') {
-                    sh 'yarn install'
-                }
+                    sh 'yarn install'              
+                  }
             }
         }
-        stage("run backend") {
+        stage('run backend') {
             steps {
-                echo 'executing gradle...'
-                withGradle() {
-                sh './gradlew -v'
-            }
-        }
-    } 
- } 
+                echo 'executing gradle'
+                sh 'wget https://services.gradle.org/distributions/gradle-5.0-bin.zip -P /tmp'
+                sh 'sudo unzip -d /opt/gradle /tmp/gradle-5.0-bin.zip'
+                sh 'export GRADLE_HOME=/opt/gradle/gradle-5.0'
+                sh 'export PATH=${GRADLE_HOME}/bin:${PATH}'
+                sh '/opt/gradle/gradle-5.0/bin/gradle -v'
+             }
+         }
+     }
 }
-
  
 
   
